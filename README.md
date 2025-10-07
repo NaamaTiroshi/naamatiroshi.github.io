@@ -1,2 +1,2 @@
-# naamatiroshi.github.il
+# naamatiroshi.github.io
 Academic personal site
