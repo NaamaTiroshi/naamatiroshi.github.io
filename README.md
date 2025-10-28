@@ -64,7 +64,8 @@
 
   <section id="contact">
     <h2>Contact</h2>
-    <p>GitHub: <a href="https://github.com/NaamaTiroshi" target="_blank">NaamaTiroshi</a></p>
+    <p>Email: n.tiroshi (at) umail.leidenuniv.nl</p>
+    <p>ORCID: 0009-0005-0500-614X</p>
   </section>
 
   <footer>
