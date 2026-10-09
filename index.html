@@ -1,21 +1,348 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Naama Tiroshi | Linguist</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Naama Tiroshi, linguist working on language documentation, description, typology, and morphosyntax.">
+  <title>Naama Tiroshi | Linguist</title>
+  <style>
+    :root {
+      --ink: #273332;
+      --muted: #687774;
+      --paper: #fffefa;
+      --soft: #f3f5f0;
+      --line: #dfe6df;
+      --accent: #426b64;
+      --accent-warm: #c17d61;
+      --hero: #293e3b;
+      --max-width: 860px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 86px; max-width: 100%; overflow-x: clip; overscroll-behavior-y: none; }
+    body {
+      margin: 0;
+      max-width: 100%;
+      overflow-x: clip;
+      overscroll-behavior-y: none;
+      color: var(--ink);
+      background: var(--paper);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 16px;
+      line-height: 1.7;
+    }
+    a { color: var(--accent); text-underline-offset: 3px; transition: color 160ms ease; }
+    a:hover { color: var(--accent-warm); }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(255, 254, 250, 0.97);
+      border-bottom: 1px solid var(--line);
+      box-shadow: 0 3px 16px rgba(39, 62, 59, 0.04);
+    }
+    .nav {
+      max-width: var(--max-width);
+      min-height: 70px;
+      margin: 0 auto;
+      padding: 0 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+    .brand {
+      color: var(--accent);
+      font-size: 1.02rem;
+      font-weight: 700;
+      letter-spacing: 0.01em;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+    .nav-links { display: flex; align-items: center; gap: 24px; }
+    .nav-links a {
+      color: #4e5d59;
+      font-size: 0.94rem;
+      padding: 7px 0;
+      border-bottom: 2px solid transparent;
+      transition: color 160ms ease, border-color 160ms ease;
+      text-decoration: none;
+    }
+    .nav-links a:hover { color: var(--accent); border-bottom-color: var(--accent-warm); }
+
+    main { max-width: var(--max-width); margin: 0 auto; padding: 30px 32px 76px; }
+    .hero {
+      width: 100vw;
+      min-height: 350px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 48px 24px;
+      text-align: center;
+      color: white;
+      background: linear-gradient(115deg, #263b38 0%, #385b54 58%, #7d8b72 100%);
+      position: relative;
+      overflow: hidden;
+      margin: -30px calc(50% - 50vw) 58px;
+    }
+    .hero::before {
+      content: "";
+      position: absolute;
+      width: 360px;
+      height: 360px;
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 50%;
+      right: -90px;
+      top: -170px;
+      box-shadow: 0 0 0 34px rgba(255,255,255,0.035), 0 0 0 70px rgba(255,255,255,0.025);
+      pointer-events: none;
+    }
+    .hero > div { position: relative; z-index: 1; }
+    .hero h1 {
+      margin: 0;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(2.6rem, 6vw, 4.4rem);
+      font-weight: 400;
+      line-height: 1.15;
+      letter-spacing: 0.01em;
+    }
+    .hero p { margin: 12px 0 0; font-size: 1.15rem; letter-spacing: 0.13em; }
+
+    section { max-width: 100%; margin: 0 auto 62px; }
+    section h2 {
+      margin: 0 0 18px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--line);
+      position: relative;
+      font-size: 1.8rem;
+      font-weight: 400;
+      line-height: 1.3;
+    }
+    section h2::after {
+      content: "";
+      display: block;
+      position: absolute;
+      width: 52px;
+      height: 3px;
+      bottom: -2px;
+      left: 0;
+      background: var(--accent-warm);
+      border-radius: 2px;
+    }
+    section p { margin: 0 0 14px; text-align: justify; }
+    .coming-soon { color: var(--muted); font-style: italic; }
+    .cv-heading {
+      margin: 28px 0 12px;
+      color: var(--accent);
+      font-size: 1.16rem;
+      font-weight: 700;
+      letter-spacing: 0.01em;
+    }
+    .cv-entry {
+      display: grid;
+      grid-template-columns: 125px minmax(0, 1fr);
+      gap: 22px;
+      padding: 12px 0;
+      border-bottom: 1px solid var(--line);
+    }
+    .cv-date { color: var(--muted); font-size: 0.94rem; white-space: nowrap; font-variant-numeric: tabular-nums; }
+    #cv .cv-entry { text-align: justify; text-justify: inter-word; }
+    #cv .cv-description { text-align: justify; text-justify: inter-word; }
+    #cv .cv-description p { text-align: justify; }
+    .cv-description { min-width: 0; }
+    .cv-description p { margin: 4px 0 0; }
+    .cv-description .cv-detail { font-size: 0.95rem; }
+    .cv-entry strong { font-weight: 700; }
+    .cv-entry a { text-decoration-thickness: 1px; }
+    .publication { margin: 0 0 17px; }
+    .publication a { font-weight: 400; text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; }
+    .publication a:hover { text-decoration-thickness: 2px; }
+    .contact-intro { margin-bottom: 8px; }
+    .contact-note { color: var(--ink); font-size: 0.95rem; }
+    .contact-details {
+      margin-top: 22px;
+      border-top: 2px solid #d8e3dc;
+      background: linear-gradient(90deg, rgba(243,245,240,0.8), rgba(255,254,250,0));
+      padding-left: 16px;
+    }
+    .contact-row {
+      display: grid;
+      grid-template-columns: 110px minmax(0, 1fr);
+      gap: 18px;
+      padding: 15px 0;
+      border-bottom: 1px solid var(--line);
+      align-items: baseline;
+    }
+    .contact-label {
+      color: var(--accent);
+      font-size: 0.9rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+    .contact-row p { margin: 0; text-align: left; overflow-wrap: anywhere; }
+    .contact-row a { text-decoration: none; }
+    .contact-row a:hover { text-decoration: underline; }
+
+    @media (max-width: 620px) {
+      .nav { padding: 14px 18px; align-items: flex-start; flex-direction: column; gap: 10px; }
+      .nav-links { width: 100%; gap: 20px; flex-wrap: wrap; }
+      .nav-links a { font-size: 0.9rem; }
+      main { padding: 20px 18px 48px; }
+      .hero { min-height: 280px; margin: -20px calc(50% - 50vw) 42px; }
+      section { margin-bottom: 42px; }
+      .contact-row { grid-template-columns: 1fr; gap: 2px; }
+      .cv-entry { grid-template-columns: 1fr; gap: 2px; }
+      .cv-date { font-size: 0.88rem; }
+    }
+  </style>
 </head>
-
 <body>
+  <header class="site-header">
+    <nav class="nav" aria-label="Main navigation">
+      <a class="brand" href="#top">Naama Tiroshi</a>
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#cv">CV</a>
+        <a href="#publications">Publications</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </nav>
+  </header>
 
-    <h1>Naama Tiroshi</h1>
+  <main id="top">
+    <div class="hero" role="img" aria-label="Dark placeholder banner with Naama Tiroshi, Linguist">
+      <div>
+        <h1>Naama Tiroshi</h1>
+        <p>Linguist</p>
+      </div>
+    </div>
 
-    <p>Linguist · Language Documentation · Typology · Morphosyntax</p>
+    <section id="about">
+      <h2>About</h2>
+      <p>Welcome to my website! I am a linguist with a focus on language documentation and description, typology, and morphosyntax. I recently completed my Research MA at Leiden University, where I graduated <em>summa cum laude</em>. I am now pursuing PhD opportunities and am excited to continue working on underdescribed languages.</p>
+    </section>
 
-    <p>
-        I am a linguist interested in language description, typology,
-        and morphosyntax, particularly in underdescribed languages.
-    </p>
+    <section id="cv">
+      <h2>CV <span style="font-size:0.72em; color:var(--muted);">(short version)</span></h2>
 
+      <h3 class="cv-heading">Education and Qualifications</h3>
+      <div class="cv-entry">
+        <div class="cv-date">Aug–Sep 2026</div>
+        <div class="cv-description"><strong>Summer School: Language Science Meets Linguistic Diversity</strong> – ELAR, HU-Berlin, ZAS</div>
+      </div>
+      <div class="cv-entry">
+        <div class="cv-date">2024–2026</div>
+        <div class="cv-description"><strong>Research MA in Linguistics</strong> – <em>summa cum laude</em> – Leiden University
+          <p class="cv-detail">Thesis: <em>The augment in Kîîtharaka (Bantu): From specificity to syntax.</em> Supervisor: Dr. Jenneke van der Wal. [<a href="https://hdl.handle.net/1887/5002729" target="_blank" rel="noopener noreferrer">link</a>]</p>
+          <p class="cv-detail">Thesis nominated for 2027 KHMW Jan Brouwer Thesis Prize.</p>
+        </div>
+      </div>
+      <div class="cv-entry">
+        <div class="cv-date">July 2026</div>
+        <div class="cv-description"><strong>Leiden Summer School in Languages and Linguistics</strong> – Leiden University</div>
+      </div>
+      <div class="cv-entry">
+        <div class="cv-date">Feb–Apr 2026</div>
+        <div class="cv-description"><strong>MapLE (Mapping Linguistic Epistemicity) Masterclass</strong> – Leiden University (online) [<a href="https://coursera.org/share/00a74e287280c2ce1e0020379815a369" target="_blank" rel="noopener noreferrer">link to certificate</a>]</div>
+      </div>
+      <div class="cv-entry">
+        <div class="cv-date">2023–2024</div>
+        <div class="cv-description"><strong>Chinese Language Studies (CSC Scholarship, non-degree)</strong> – Zhejiang University</div>
+      </div>
+      <div class="cv-entry">
+        <div class="cv-date">2022–2023</div>
+        <div class="cv-description"><strong>Erasmus+ Exchange Semester in Linguistics</strong> – Leiden University</div>
+      </div>
+
+      <h3 class="cv-heading">Employment</h3>
+      <div class="cv-entry">
+        <div class="cv-date">2024–Now</div>
+        <div class="cv-description"><strong>Hebrew Language Contributor for ‘Linguistic Bibliography’</strong> – Brill Academic Publisher</div>
+      </div>
+      <div class="cv-entry">
+        <div class="cv-date">Feb–Aug 2026</div>
+        <div class="cv-description"><strong>Research Intern (with Prof. Koen Bostoen and Dr. Hilde Gunnink)</strong> – Ghent University</div>
+      </div>
+      <div class="cv-entry">
+        <div class="cv-date">2024–2026</div>
+        <div class="cv-description"><strong>Hebrew Teacher</strong> – Taalhuis, Amsterdam</div>
+      </div>
+      <div class="cv-entry">
+        <div class="cv-date">Jan 2026</div>
+        <div class="cv-description"><strong>Hebrew Teacher</strong> – The Intensive Hebrew Winter Course, University of Amsterdam</div>
+      </div>
+      <div class="cv-entry">
+        <div class="cv-date">2024–2025</div>
+        <div class="cv-description"><strong>Student Representative</strong> – Linguistics ResMA Programme Committee – Leiden University</div>
+      </div>
+      <div class="cv-entry">
+        <div class="cv-date">2021–2024</div>
+        <div class="cv-description"><strong>Research Assistant (with Prof. Alena Witzlack-Makarevich)</strong>
+          <p class="cv-detail">Member of the multi-member project <em>Peripheral Khoekhoe Varieties: A Comprehensive Documentation and Description</em> (PI: Prof. Alena Witzlack-Makarevich).</p>
+        </div>
+      </div>
+
+      <h3 class="cv-heading">Conference Talks</h3>
+      <div class="cv-entry">
+        <div class="cv-date">August 2026</div>
+        <div class="cv-description">Workshop <em>Advances and Developments in Cross-Bantu Typology: Empirical, Comparative and Methodological Approaches</em>, the 11th International Conference on Bantu Languages (Bantu11), Ghent University, Belgium. [<a href="https://doi.org/10.5281/zenodo.22538567" target="_blank" rel="noopener noreferrer">link</a>]</div>
+      </div>
+      <div class="cv-entry">
+        <div class="cv-date">May 2026</div>
+        <div class="cv-description">57th Annual Conference on African Linguistics (ACAL57), University at Buffalo, NY.</div>
+      </div>
+      <div class="cv-entry">
+        <div class="cv-date">March 2026</div>
+        <div class="cv-description">Young Africanists’ Research Network (YARN) Inaugural Workshop, University of Göttingen, Germany.</div>
+      </div>
+      <div class="cv-entry">
+        <div class="cv-date">August 2025</div>
+        <div class="cv-description">Invited talk at Linguistics Seminar, Tharaka University, Kenya.</div>
+      </div>
+
+      <h3 class="cv-heading">Prizes and Scholarships</h3>
+      <p class="coming-soon">To be added.</p>
+
+      <h3 class="cv-heading">Fieldwork</h3>
+      <div class="cv-entry">
+        <div class="cv-date">Jul–Sep 2025</div>
+        <div class="cv-description">Kîîtharaka (Bantu), Marimanti, Kenya (7 weeks).</div>
+      </div>
+      <div class="cv-entry">
+        <div class="cv-date">Sep–Dec 2024</div>
+        <div class="cv-description">Duri (Malayo-Polynesian), classroom setting (<em>Field Methods</em> course).</div>
+      </div>
+      <div class="cv-entry">
+        <div class="cv-date">July 2022</div>
+        <div class="cv-description">Khoekhoe (Khoe-Kwadi), Namibia (3 weeks).</div>
+      </div>
+    </section>
+
+    <section id="publications">
+      <h2>Publications</h2>
+      <p class="publication">Tiroshi, Naama. 2026. <em>Kîîtharaka descriptions and folktales.</em> [Dataset]. Zenodo. [<a href="https://doi.org/10.5281/zenodo.22412431" target="_blank" rel="noopener noreferrer">link</a>]</p>
+      <p class="publication">Tiroshi, Naama. 20 August 2026. The augment in Kîîtharaka: From specificity to syntax. Zenodo. <em>11th International Conference on Bantu Languages (Bantu11),</em> Ghent University, Belgium. [<a href="https://doi.org/10.5281/zenodo.22538567" target="_blank" rel="noopener noreferrer">link</a>]</p>
+      <p class="publication">Tiroshi, Naama. 2026. <em>The augment in Kîîtharaka (Bantu): From specificity to syntax.</em> Leiden University. (Research MA thesis.) [<a href="https://hdl.handle.net/1887/5002729" target="_blank" rel="noopener noreferrer">link</a>]</p>
+    </section>
+
+    <section id="contact">
+      <h2>Contact</h2>
+      <p class="contact-intro">Feel free to get in touch!</p>
+      <p class="contact-note"><strong>Since I just graduated, my Leiden University email will soon be deactivated.</strong></p>
+      <div class="contact-details">
+        <div class="contact-row">
+          <span class="contact-label">Email</span>
+          <p>firstname dot lastname at gmail.com</p>
+        </div>
+        <div class="contact-row">
+          <span class="contact-label">ORCID</span>
+          <p><a href="https://orcid.org/0009-0005-0500-614X" target="_blank" rel="noopener noreferrer">https://orcid.org/0009-0005-0500-614X ↗</a></p>
+        </div>
+      </div>
+    </section>
+
+  </main>
 </body>
 </html>
